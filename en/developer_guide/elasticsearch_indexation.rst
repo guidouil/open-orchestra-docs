@@ -1,12 +1,18 @@
 Elasticsearch indexation
 ========================
 
+General note
+------------
+
+I will describe the provisionning modification for the ``vagrant`` environment. All the modification
+could be done on all the different environment.
+
 Elasticsearch
 -------------
 
 `Elasticsearch`_ is a common indexor based on the `lucene`_ engine written in Java. To install it on the
 computer running the application, you should add the ``indexation`` group to the file
-``provisioning/hosts/vagrant`` (or the environment you are working on):
+``provisioning/hosts/vagrant`` :
 
 .. code-block::
 
@@ -35,7 +41,7 @@ We also recommand you to install the `plugin head`_ which could give you usefull
 
 Run the provisionning (``vagrant provision``) to install `Elasticsearch`_.
 
-Go on http://192.168.33.10:9200/ to check if he is running properly. You should see ``status: 200`` in
+Go on http://192.168.33.10:9200/ to check if it is running properly. You should see ``status: 200`` in
 the json response.
 
 Go on http://192.168.33.10:9200/_plugin/head/ to see the `plugin head`_ working.
@@ -73,6 +79,15 @@ After running the ``composer update`` command, you would see some new command ap
 
     $ php app/console | grep orchestra
 
+Those commands are :
+
+.. code-block:: bash
+
+    orchestra:elastica:index:create         Create an index in elastic search
+    orchestra:elastica:index:drop           Drop the index in elasticsearch
+    orchestra:elastica:populate             Populate the content index with the contents
+    orchestra:elastica:schema:create        Load the schema from the content types
+
 Creating the index
 ~~~~~~~~~~~~~~~~~~
 
@@ -84,6 +99,8 @@ to create the index.
     $ php app/console orchestra:elastica:index:create
 
 For more advanced users, you can directly go on `Elasticsearch`_ and create your index with the name ``content``.
+
+There is only an output if there is an error during the process.
 
 Creating the schema
 ~~~~~~~~~~~~~~~~~~~
@@ -98,6 +115,8 @@ The first time you are using `Elasticsearch`_ on an existing installation, you s
 
 During the project lifetime, the schema will be automatically updated each time the ``ContentType`` are updated.
 
+There is only an output if there is an error during the process.
+
 Populating the index
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -109,6 +128,8 @@ the command :
     $ php app/console orchestra:elastica:index:create
 
 During the project lifetime, the indexed data will be automatically updated each time you publish a ``Content``.
+
+There is only an output if there is an error during the process.
 
 .. _`Elasticsearch`: https://www.elastic.co/
 .. _`lucene`: https://lucene.apache.org/core/
