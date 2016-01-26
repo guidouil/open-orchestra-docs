@@ -4,7 +4,7 @@ Elasticsearch indexation
 General note
 ------------
 
-I will describe the provisionning modification for the ``vagrant`` environment. All the modification
+This documentation describes the provisionning modification for the ``vagrant`` environment. All the modification
 could be done on all the different environment.
 
 Elasticsearch
