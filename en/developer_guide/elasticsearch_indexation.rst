@@ -64,13 +64,14 @@ In the ``app/AppKernel.php`` file :
 
     new OpenOrchestra\ElasticaBundle\OpenOrchestraElasticaBundle(),
 
-If your `Elasticsearch`_ is not listening on the ``127.0.0.1`` address, add the configuration in the
-``app/config/config.yml`` file :
+Add the `Elasticsearch`_ listening address in the ``app/config/config.yml`` file :
 
 .. code-block:: yaml
 
     open_orchestra_elastica:
         host: 192.168.33.10
+
+``192.168.33.10`` is our local configuration, this can vary on your installation.
 
 After running the ``composer update`` command, you would see some new command appear when running
 ``php app/console`` :
